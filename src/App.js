@@ -1,13 +1,34 @@
 import React from 'react'
-import List from './List'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { Container, Row } from 'react-bootstrap'
+
+import CityForm from './components/CityForm'
+import CityContainer from './components/CityContainer'
+
+
+
 
 class App extends React.Component {
   render () {
-    let title = "TITLE"
+
     
     return (
-      <div>
-        <List title={title}/>
+      <div className= "App">
+
+        <Container fluid="md">
+          <Row className="justify-content-md-center">
+            <h2>myForecast</h2>
+          </Row>
+          <Row className="justify-content-md-center">
+            <CityForm/>
+          </Row>
+        </Container>
+        
+        
+        <Container fluid="md">
+          <CityContainer/>
+        </Container>
+        
       </div>
     )
   }
