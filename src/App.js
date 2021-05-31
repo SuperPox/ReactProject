@@ -2,8 +2,8 @@ import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Container, Row } from 'react-bootstrap'
 
-import CityForm from './components/CityForm'
 import CityContainer from './components/CityContainer'
+import CityStateForm from './components/CityStateForm'
 
 
 
@@ -20,7 +20,10 @@ class App extends React.Component {
             <h2>myForecast</h2>
           </Row>
           <Row className="justify-content-md-center">
-            <CityForm/>
+            
+          </Row>
+          <Row className="justify-content-md-center">
+            <CityStateForm/>
           </Row>
         </Container>
         
