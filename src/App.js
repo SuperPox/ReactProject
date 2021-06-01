@@ -1,10 +1,12 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Container, Row } from 'react-bootstrap'
+import NavBar from './NavBar'
 
 import CityContainer from './components/CityContainer'
 
 import CitiesContainer from './components/CitiesContainer'
+
 
 /*
 class App extends React.Component {
@@ -37,6 +39,7 @@ class App extends React.Component {
 function App() {
   return (
     <div className= "App">
+      <NavBar />
       <Container fluid="md">
         <Row className="justify-content-md-center">
           <h2>myColoradoForecast</h2>
