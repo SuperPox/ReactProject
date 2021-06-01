@@ -1,6 +1,8 @@
+/*
 import React from 'react'
 import CityContainer from './CityContainer'
 import CityStateForm from './CityStateForm'
+
 
 class CitySingle extends React.Component {
     render() {
@@ -11,5 +13,14 @@ class CitySingle extends React.Component {
         )
     }
 }
+*/
 
-export default CitySingle
+export default function CitySingle(props) {
+    return (
+        <div>
+            {props.city.name}
+        </div>
+    )
+}
+
+

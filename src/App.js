@@ -6,17 +6,14 @@ import CityContainer from './components/CityContainer'
 
 import CitiesContainer from './components/CitiesContainer'
 
-
+/*
 class App extends React.Component {
-  render () {
-
-    
+  render () {   
     return (
       <div className= "App">
-
         <Container fluid="md">
           <Row className="justify-content-md-center">
-            <h2>myForecast</h2>
+            <h2>myColoradoForecast</h2>
           </Row>
         </Container>
               
@@ -26,6 +23,7 @@ class App extends React.Component {
 
 
         <Container fluid="md">
+          ALT
           <CitiesContainer />
         </Container>
         
@@ -33,5 +31,31 @@ class App extends React.Component {
     )
   }
 }
+*/
+
+
+function App() {
+  return (
+    <div className= "App">
+      <Container fluid="md">
+        <Row className="justify-content-md-center">
+          <h2>myColoradoForecast</h2>
+        </Row>
+      </Container>
+            
+      <Container fluid="md">
+        <CityContainer/>
+      </Container>
+
+
+      <Container fluid="md">
+        ALT
+        <CitiesContainer />
+      </Container>   
+  </div>
+  )
+}
+
+
 
 export default App;

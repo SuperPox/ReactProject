@@ -12,7 +12,7 @@ export class CityContainer extends Component {
         }
         this.updateState = this.updateState.bind(this)
     }
-
+        
     // Fetching Data from API
     componentDidMount() {      
         fetch("http://localhost:3000/cities")
@@ -24,24 +24,25 @@ export class CityContainer extends Component {
         })
     }
 
-        
+
+
     updateState(arg) {
         this.setState((prevState, prevProps) => {
             return {cities: [...prevState.cities, arg]}
         })
     }
     
-
+    //was div instead of fragment
     render() {
         return (
-            <div>
+            <React.Fragment>  
                 <Container className='mb-3' style={{ color: "#111"}}>
                     <CityStateForm sendData={this.updateState}/>
                     <ul>
                         {this.state.cities.map((city, i) => <CitySingle key={i} city={city} />)}
                     </ul>
                 </Container>               
-            </div>
+            </React.Fragment>
         )
     }
 }
