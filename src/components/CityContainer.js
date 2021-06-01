@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Container } from 'react-bootstrap'
 import CityStateForm from './CityStateForm'
+import CitySingle from './CitySingle'
 
 export class CityContainer extends Component {
 
@@ -12,19 +13,24 @@ export class CityContainer extends Component {
         this.updateState = this.updateState.bind(this)
     }
 
-    componentDidMount() {
+    // Fetching Data from API
+    componentDidMount() {      
         fetch("http://localhost:3000/cities")
         .then(function(response) {
             return response.json()
-        })
+        })       
         .then((citiesArray) => {
             this.setState({cities: citiesArray})
         })
     }
 
+        
     updateState(arg) {
-        this.setState({cities: [arg] })
+        this.setState((prevState, prevProps) => {
+            return {cities: [...prevState.cities, arg]}
+        })
     }
+    
 
     render() {
         return (
@@ -32,11 +38,9 @@ export class CityContainer extends Component {
                 <Container className='mb-3' style={{ color: "#111"}}>
                     <CityStateForm sendData={this.updateState}/>
                     <ul>
-                        {this.state.cities}
+                        {this.state.cities.map((city, i) => <CitySingle key={i} city={city} />)}
                     </ul>
-                </Container>
-                
-                
+                </Container>               
             </div>
         )
     }

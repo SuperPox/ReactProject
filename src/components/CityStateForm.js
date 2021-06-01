@@ -13,6 +13,7 @@ export class CityStateForm extends Component {
         this.setState({[e.target.name]: e.target.value })
     }
 
+    // POST REQUEST TO API
     handleSubmit(e) {
         e.preventDefault()
         const body = {city: this.state}
@@ -21,7 +22,7 @@ export class CityStateForm extends Component {
             headers: {Accept: "application/json", "Content-Type": "application/json"},
             body: JSON.stringify(body)
         }).then(r => r.json())
-        .then(city => this.props.sendData(city))
+        .then(city => this.props.sendData(city)) 
         this.setState({name: ""})
     }
 
