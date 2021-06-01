@@ -7,24 +7,33 @@ export class CityContainer extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            cityName: "",
-            stateName: ""
+            cities: []
         }
-        this.updateSearch = this.updateSearch.bind(this)
+        this.updateState = this.updateState.bind(this)
     }
 
-
-    updateSearch(city, state) {
-        this.setState({cityName: city, stateName: state})
+    componentDidMount() {
+        fetch("http://localhost:3000/cities")
+        .then(function(response) {
+            return response.json()
+        })
+        .then((citiesArray) => {
+            this.setState({cities: citiesArray})
+        })
     }
 
+    updateState(arg) {
+        this.setState({cities: [arg] })
+    }
 
     render() {
         return (
             <div>
                 <Container className='mb-3' style={{ color: "#111"}}>
-                    <CityStateForm sendData={this.updateSearch}/>
-                    {this.state.cityName} {this.state.stateName}
+                    <CityStateForm sendData={this.updateState}/>
+                    <ul>
+                        {this.state.cities}
+                    </ul>
                 </Container>
                 
                 

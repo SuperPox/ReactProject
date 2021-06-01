@@ -5,8 +5,7 @@ export class CityStateForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            cityName: "",
-            cityState: ""
+            name: ""
         }
     }
     
@@ -16,9 +15,14 @@ export class CityStateForm extends Component {
 
     handleSubmit(e) {
         e.preventDefault()
-        this.props.sendData(this.state.cityName, this.state.cityState)
-        this.setState({cityName: ""})
-        this.setState({cityState: ""})
+        const body = {city: this.state}
+        fetch("http://localhost:3000/cities", {
+            method: "POST",
+            headers: {Accept: "application/json", "Content-Type": "application/json"},
+            body: JSON.stringify(body)
+        }).then(r => r.json())
+        .then(city => this.props.sendData(city))
+        this.setState({name: ""})
     }
 
     render() {
@@ -29,15 +33,8 @@ export class CityStateForm extends Component {
                         type = "text" 
                         placeholder = "eg. City"
                         onChange = {this.handleChange.bind(this)}
-                        value = {this.state.cityName}
-                        name = "cityName"
-                    />
-                    <input 
-                        type = "text" 
-                        placeholder = "eg. State"
-                        onChange = {this.handleChange.bind(this)}
-                        value = {this.state.cityState}
-                        name = "cityState"
+                        value = {this.state.name}
+                        name = "name"
                     />
                     <input type = "submit" />
                 </form>
